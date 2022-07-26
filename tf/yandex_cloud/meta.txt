@@ -1,0 +1,8 @@
+#cloud-config
+users:
+  - name: ew
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDk0pebFXPeClVOrI8ijDBA6/gLKdjec+aBN3w3nIm10qS+qP3JrDQAeppi7M9C9ndXXqYoETQl1AnntvbOhPwYCgFLMzW8ZGY5Fz/A3CcUelAWt/S8L/LQ7WfFkNs4KQrqhNfOooK3MYyZnfWUTcjt6yIZ0Q1yxFHsNFAm9IHukv0eopEn+NdYe103d2AADeqZwPOSS/JZEkMb6ywXhGLqdVeAfwJAP4iGU+Sh1Z4EU4uUO/jeLZxfVIiI+2mZopcDudtsHSF9QUxkBi8gCvXMcHTL3il+02JBQGO9pkLasg4KKNwiWpxe1kT0FWNhi7RQifnghWgB2qxNSRZ6VPycnzwaS6EYaeZNkClQ3fRRgRAA4CgtBbQUU4Qz082yEd66Z94rLr7lxm+B3/GEokJnMS9w1uyMghf5GRYVLQVQfZpnuhWQDblQuGeaAFFynevAtyKmWoCrBf8cZ9ReySpyQ0xFSdCKDcMONTU2VMh7al+3thXIQS7f5wrcgrC1EOc= y.semendyaev@y-semendyaev
