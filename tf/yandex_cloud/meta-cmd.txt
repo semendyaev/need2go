@@ -1,0 +1,9 @@
+#cloud-config
+write_files:
+  - path: /opt/runtest.sh
+    permissions: '0555'
+    content: |
+      #!/bin/bash
+      echo "Hello"
+#runcmd:
+#  - ["sh", "/home/resources/wso/bin/wso.sh"]

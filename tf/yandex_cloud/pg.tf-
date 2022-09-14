@@ -1,0 +1,71 @@
+resource "yandex_compute_instance" "pg1" {
+  name = "pg1"
+  platform_id = "standard-v2"
+
+  resources {
+    cores  = 2
+    memory = 1
+    core_fraction = 5     // 5% guatanteed perfomance (vCPU)
+  }
+
+  boot_disk {
+    initialize_params {
+      image_id = "fd8ofg98ci78v262j491"
+    }
+  }
+
+  network_interface {
+    subnet_id = yandex_vpc_subnet.subnet-1.id
+    nat       = true
+  }
+
+  scheduling_policy {
+    preemptible = true    // interrupted vm cheaper
+  }
+
+  metadata = {
+    user-data = "${file("./meta.txt")}"
+  }
+}
+
+
+resource "yandex_compute_instance" "pg2" {
+  name = "pg2"
+  platform_id = "standard-v2"
+
+  resources {
+    cores  = 2
+    memory = 0.5
+    core_fraction = 5     // 5% guatanteed perfomance (vCPU)
+  }
+
+  boot_disk {
+    initialize_params {
+      image_id = "fd8ofg98ci78v262j491"
+    }
+  }
+
+  network_interface {
+    subnet_id = yandex_vpc_subnet.subnet-1.id
+    nat       = true
+  }
+
+  scheduling_policy {
+    preemptible = true    // interrupted vm cheaper
+  }
+
+  metadata = {
+    user-data = "${file("./meta.txt")}"
+  }
+}
+
+
+
+output "internal_ip_address_pg1" {
+  value = yandex_compute_instance.pg1.network_interface.0.ip_address
+}
+
+
+output "internal_ip_address_pg2" {
+  value = yandex_compute_instance.pg2.network_interface.0.ip_address
+}
